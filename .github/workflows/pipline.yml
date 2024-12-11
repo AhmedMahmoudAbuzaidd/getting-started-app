@@ -1,38 +1,4 @@
-# name: Docker image CI  
-# on:
-#   push:
-#     branches:
-#       - main
-#   pull_request:
-#     branches:
-#       - main
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#     - name: checkout code 
-#       uses: actions/checkout@v3
-
-#     - name: setup docker buildx 
-#       uses: docker/setup-buildx-action@v3
-
-#     - name: Log in to github container registry
-#       uses: docker/login-action@v3
-#       with:
-#         registry: ghrc.io
-#         username: ${{ github.repository_owner }}
-#         password: ${{ secrets.GITHUB_TOKEN }}
-
-#     - name: Build and Push Docker Image 
-#       uses: docker/build-push-action@v5
-#       with:
-#         context: .
-#         push: true
-#         tags: | 
-#           ghcr.io/${{github.repository_owner | toLowerCase }}/getting-started:latest  
-#           ghcr.io/${{github.repository_owner | toLowerCase }}/getting-started:${{github.sha}}
-name: Docker image CI
-
+name: Docker Image CI
 on:
   push:
     branches:
@@ -42,9 +8,12 @@ on:
       - main
 
 jobs:
+
   build:
     runs-on: ubuntu-latest
+    
     steps:
+
     - name: Checkout code
       uses: actions/checkout@v3
 
@@ -58,11 +27,11 @@ jobs:
         username: ${{ github.repository_owner }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Build and Push Docker Image
+    - name: Build and push Docker image
       uses: docker/build-push-action@v5
       with:
         context: .
         push: true
-        tags: |
-          ghcr.io/${{ github.repository_owner | toLowerCase}}/getting-started:latest
-          ghcr.io/${{ github.repository_owner | toLowerCase}}/getting-started:${{ github.sha }}
+        tags: | 
+          ghcr.io/${{ github.repository_owner | toLowerCase }}/abohmeed/getting-started:latest
+          ghcr.io/${{ github.repository_owner | toLowerCase }}/abohmeed/getting-started:${{ github.sha }}
