@@ -33,5 +33,5 @@ jobs:
         context: .
         push: true
         tags: | 
-          ghcr.io/${{ github.repository_owner | toLowerCase }}/abohmeed/getting-started:latest
-          ghcr.io/${{ github.repository_owner | toLowerCase }}/abohmeed/getting-started:${{ github.sha }}
+          ghcr.io/${{ github.repository_owner }}/ahmedmahmoudabuzaid/getting-started:latest
+          ghcr.io/${{ github.repository_owner }}/ahmedmahmoudabuzaid/getting-started:${{ github.sha }}
